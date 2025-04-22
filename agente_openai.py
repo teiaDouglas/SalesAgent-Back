@@ -1,9 +1,12 @@
 import openai
+from dotenv import load_dotenv
 import os
 
-# Defina sua chave da API aqui ou por variável de ambiente
-openai.api_key = "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"
+# Carrega variáveis do arquivo .env
+load_dotenv()
 
+# Usa a chave da variável de ambiente
+openai.api_key = os.getenv("OPENAI_API_KEY")
 async def consulta_openai(descricao):
     prompt = f"""
 Você é um assistente especialista em produtos eletroeletrônicos. Um vendedor te pergunta sobre o seguinte produto: "{descricao}".
